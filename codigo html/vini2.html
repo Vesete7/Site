@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedir Lanche</title>
+    <link rel="stylesheet" href="vini2.css">
+</head>
+<body>
+    <header>
+        <img src="img vini/vl.png" height="250px" alt="">
+        <h1>VL Burguer -- Faça o Seu Pedido </h1>
+        <nav>
+            <ul>
+                <li><a href="vini.html">Voltar ao Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 id="lanche-nome">Seu Lanche</h2>
+        <p id="descricao"></p>
+
+        <h3>Faça seu Pedido</h3>
+        <form id="pedido-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" value="1" min="1" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" required>
+
+            <label for="endereco">Endereço:</label>
+            <input type="end" id="endereco" required>
+
+            <button  type="submit">Enviar Pedido</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Lanchonete. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Função para pegar os parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const lanche = urlParams.get('lanche');
+
+        // Mapeando os lanches para suas descrições
+        const descricoes = {
+            xburguer: "Delicioso hambúrguer com queijo, alface e molho especial.",
+            cheeseburger: "Hambúrguer com queijo cheddar e bacon crocante.",
+            hotdogclassico: "Salsicha suculenta com ketchup e mostarda.",
+            hotdogcompleto: "Com batata palha, maionese e relish.",
+            pizzamargherita: "Pizza clássica com molho de tomate, queijo e manjericão.",
+            pizzacalabresa: "Com cebola e azeitonas, uma explosão de sabor."
+        };
+
+        // Definindo o nome e a descrição do lanche
+        document.getElementById('lanche-nome').innerText = lanche.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/\b\w/g, c => c.toUpperCase());
+        document.getElementById('descricao').innerText = descricoes[lanche] || "Lanche não encontrado.";
+    </script>
+</body>
+</html>
